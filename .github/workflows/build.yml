@@ -42,7 +42,7 @@ jobs:
         if-no-files-found: error # 'error', 'warn', 'ignore'; defaults to `warn`
 
   # todo: 1-bit sd card variant
-  buildroot:
+  kernel:
     uses: MiyooCFW/kernel/.github/workflows/build.yml@master
     with:
       submodule: kernel

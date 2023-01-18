@@ -27,14 +27,9 @@ jobs:
           
           # update submodules to the latest remote version
           git submodule update --remote --merge
-          
-          # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idoutputs
-          echo "::set-output name=changes::$(git status --porcelain)"
-      - name: Push changes
-        if: ${{ steps.update.outputs.changes }}
-        run: |
+
           git config user.email "action@github.com"
           git config user.name "GitHub Actions"
-          git commit -am "Updated submodules $(date)"
+          git commit -am "Updated $(git diff --name-only | xargs) on $(date)"
           git push
 

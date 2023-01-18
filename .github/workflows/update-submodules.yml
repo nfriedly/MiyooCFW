@@ -37,5 +37,5 @@ jobs:
           git config user.email "action@github.com"
           git config user.name "GitHub Actions"
           git commit -am "Updated $(git diff --name-only | xargs) on $(date)"
-          git push
+          #git push
 

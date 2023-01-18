@@ -33,8 +33,9 @@ jobs:
       - name: Push changes
         if: ${{ steps.update.outputs.changes }}
         run: |
+          echo "changes=${{ steps.update.outputs.changes }}"
           git config user.email "action@github.com"
           git config user.name "GitHub Actions"
-          git commit -am "Updated submodules $(date)"
+          git commit -am "Updated $(git diff --name-only | xargs) on $(date)"
           git push
 
